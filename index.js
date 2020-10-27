@@ -4,24 +4,24 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 //connect and listen to changes in the postgres db
-var io = require('socket.io').listen(5000);
-var pg = require ('pg');
+// var io = require('socket.io').listen(5000);
+// var pg = require ('pg');
 
-var con_string = 'tcp://username:password@localhost/dbname';
+// var con_string = 'tcp://username:password@localhost/dbname';
 
-var pg_client = new pg.Client(con_string);
-pg_client.connect();
-var query = pg_client.query('LISTEN addedrecord');
+// var pg_client = new pg.Client(con_string);
+// pg_client.connect();
+// var query = pg_client.query('LISTEN addedrecord');
 
-io.sockets.on('connection', function (socket) {
-    socket.emit('connected', { connected: true });
+// io.sockets.on('connection', function (socket) {
+//     socket.emit('connected', { connected: true });
 
-    socket.on('ready for data', function (data) {
-        pg_client.on('notification', function(title) {
-            socket.emit('update', { message: title });
-        });
-    });
-});
+//     socket.on('ready for data', function (data) {
+//         pg_client.on('notification', function(title) {
+//             socket.emit('update', { message: title });
+//         });
+//     });
+// });
 
 
 //notification 
